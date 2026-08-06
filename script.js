@@ -127,11 +127,10 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ---------- BorderGlow — Education card ----------
-const eduCard = document.querySelector('.edu-glow');
-if (eduCard) {
-  eduCard.addEventListener('pointermove', (e) => {
-    const rect = eduCard.getBoundingClientRect();
+// ---------- BorderGlow — all info cards ----------
+document.querySelectorAll('.edu-glow').forEach(card => {
+  card.addEventListener('pointermove', (e) => {
+    const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const cx = rect.width / 2;
@@ -143,10 +142,10 @@ if (eduCard) {
     const proximity = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1) * 100;
     let angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
     if (angle < 0) angle += 360;
-    eduCard.style.setProperty('--edge-proximity', proximity.toFixed(3));
-    eduCard.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
+    card.style.setProperty('--edge-proximity', proximity.toFixed(3));
+    card.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
   });
-}
+});
 
 // ---------- Theme toggle (light/dark) ----------
 const themeBtn = document.getElementById('themeToggle');
