@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariam Fatima — Software Engineer & Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav">
+    <div class="logo">Mariam <span class="accent-italic">Fatima</span></div>
+    <nav class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <a href="#contact" class="btn btn-sm">Let's Connect</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="badge">✦ Hi, I'm</span>
+        <h1>Mariam<span class="accent-italic">Fatima</span></h1>
+        <p class="role">Software Engineering Student &amp; Graphic Designer<br>crafting logical systems with an editorial eye.</p>
+        <div class="hero-meta">
+          <a href="#" target="_blank">🔗 LinkedIn</a>
+          <a href="#" target="_blank">🐙 GitHub</a>
+          <a href="#" target="_blank">🎨 Behance</a>
+          <span><span class="dot"></span> Based in Islamabad, PK</span>
+        </div>
+      </div>
+      <div class="portrait-wrap reveal">
+        <div class="portrait-blob"></div>
+        <div class="portrait">
+          <span class="portrait-initial">MF</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT + INFO CARDS -->
+  <section class="about-section" id="about">
+    <div class="reveal">
+      <div class="eyebrow">About Me</div>
+      <h2>I'm a passionate <span class="accent-italic">problem solver</span></h2>
+      <p>I am a Software Engineering student with a strong interest in Artificial Intelligence, Web Development, and UI/UX Design. I enjoy transforming complex requirements into functional, responsive, and visually delightful digital solutions.</p>
+      <a href="#projects" class="btn">More About Me</a>
+    </div>
+
+    <div class="card-stack">
+      <div class="info-card reveal">
+        <div class="info-icon">🎓</div>
+        <div>
+          <h3>Education</h3>
+          <div class="info-tags">Software Engineering · Undergraduate · <strong style="color:var(--coral-deep)">DSU</strong></div>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-icon">⌘</div>
+        <div>
+          <h3>Experience</h3>
+          <div class="info-tags">Internships · Projects · Freelance</div>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-icon">🎨</div>
+        <div>
+          <h3>Design Tools</h3>
+          <div class="info-tags">Figma · Illustrator · Canva</div>
+        </div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-icon">❤</div>
+        <div>
+          <h3>Interests</h3>
+          <div class="info-tags">AI &amp; ML · Web Development · Graphic Design</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section" id="skills">
+    <div class="section-head reveal">
+      <h2>Skills</h2>
+      <span class="sub">Technologies I work with</span>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="projects">
+    <div class="section-head reveal" style="justify-content:space-between;">
+      <div>
+        <h2>Projects</h2>
+        <span class="sub">Some of my recent work</span>
+      </div>
+      <a href="#" class="btn btn-outline btn-sm">View All Projects</a>
+    </div>
+
+    <div class="project-list" id="projectList"></div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="exp-section" id="experience">
+    <div class="section-head reveal">
+      <h2>Experience</h2>
+      <span class="sub">My journey so far</span>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="cta-section" id="contact">
+    <div class="cta-card reveal">
+      <div>
+        <h2>Let's build something amazing together!</h2>
+        <p>Have an idea, project, or opportunity you want to collaborate on? Drop a message!</p>
+        <div class="cta-btns">
+          <a href="mailto:mariamfatima486@gmail.com" class="btn">Get In Touch</a>
+          <a href="#" class="btn btn-outline">Review CV</a>
+        </div>
+      </div>
+      <ul class="contact-list">
+        <li><span class="ic">✉</span> mariamfatima486@gmail.com</li>
+        <li><span class="ic">📍</span> Karachi, Pakistan</li>
+        <li><span class="ic">in</span> linkedin.com/in/syedamariamfatima</li>
+        <li><span class="ic">🐙</span> github.com/mariamfatima</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Mariam Fatima. All rights reserved.</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
