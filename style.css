@@ -465,3 +465,122 @@ footer{
 
 /* Section anchors offset for sticky header */
 section[id]{ scroll-margin-top: 90px; }
+
+/* ---------- BorderGlow effect (Education card) ---------- */
+.edu-glow{
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --edge-sensitivity: 30;
+  --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+  --cone-spread: 25;
+  --glow-padding: 28px;
+  --glow-color:    hsl(16deg 100% 65% / 100%);
+  --glow-color-60: hsl(16deg 100% 65% / 60%);
+  --glow-color-50: hsl(16deg 100% 65% / 50%);
+  --glow-color-40: hsl(16deg 100% 65% / 40%);
+  --glow-color-30: hsl(16deg 100% 65% / 30%);
+  --glow-color-20: hsl(16deg 100% 65% / 20%);
+  --glow-color-10: hsl(16deg 100% 65% / 10%);
+  --g1: radial-gradient(at 80% 55%, #ff6b4a 0px, transparent 50%);
+  --g2: radial-gradient(at 69% 34%, #e8532f 0px, transparent 50%);
+  --g3: radial-gradient(at  8%  6%, #ffab8a 0px, transparent 50%);
+  --g4: radial-gradient(at 41% 38%, #ff6b4a 0px, transparent 50%);
+  --g5: radial-gradient(at 86% 85%, #e8532f 0px, transparent 50%);
+  --g6: radial-gradient(at 82% 18%, #ffab8a 0px, transparent 50%);
+  --g7: radial-gradient(at 51%  4%, #ff6b4a 0px, transparent 50%);
+  --gb: linear-gradient(#ff6b4a 0 100%);
+
+  position: relative;
+  isolation: isolate;
+  transform: translate3d(0,0,0.01px);
+  overflow: visible !important;
+}
+
+.edu-glow::before,
+.edu-glow::after,
+.edu-glow > .edge-light{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: opacity .25s ease-out;
+  z-index: -1;
+}
+.edu-glow:not(:hover)::before,
+.edu-glow:not(:hover)::after,
+.edu-glow:not(:hover) > .edge-light{
+  opacity: 0;
+  transition: opacity .75s ease-in-out;
+}
+
+/* coloured mesh border */
+.edu-glow::before{
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--bg-card) 0 100%) padding-box,
+    linear-gradient(rgb(255 255 255 / 0%) 0 100%) border-box,
+    var(--g1) border-box, var(--g2) border-box, var(--g3) border-box,
+    var(--g4) border-box, var(--g5) border-box, var(--g6) border-box,
+    var(--g7) border-box, var(--gb) border-box;
+  opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+  mask-image: conic-gradient(
+    from var(--cursor-angle) at center,
+    black calc(var(--cone-spread) * 1%),
+    transparent calc((var(--cone-spread) + 15) * 1%),
+    transparent calc((100 - var(--cone-spread) - 15) * 1%),
+    black calc((100 - var(--cone-spread)) * 1%)
+  );
+}
+
+/* mesh fill near edges */
+.edu-glow::after{
+  border: 1px solid transparent;
+  background:
+    var(--g1) padding-box, var(--g2) padding-box, var(--g3) padding-box,
+    var(--g4) padding-box, var(--g5) padding-box, var(--g6) padding-box,
+    var(--g7) padding-box, var(--gb) padding-box;
+  mask-image:
+    linear-gradient(to bottom, black, black),
+    radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+    radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+    conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+  mask-composite: subtract, add, add, add, add, add;
+  opacity: calc(.5 * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+  mix-blend-mode: soft-light;
+}
+
+/* outer glow halo */
+.edu-glow > .edge-light{
+  inset: calc(var(--glow-padding) * -1);
+  pointer-events: none;
+  z-index: 1;
+  mask-image: conic-gradient(
+    from var(--cursor-angle) at center,
+    black 2.5%, transparent 10%, transparent 90%, black 97.5%
+  );
+  opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+  mix-blend-mode: plus-lighter;
+}
+.edu-glow > .edge-light::before{
+  content: "";
+  position: absolute;
+  inset: var(--glow-padding);
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px var(--glow-color),
+    inset 0 0 1px 0 var(--glow-color-60),
+    inset 0 0 3px 0 var(--glow-color-50),
+    inset 0 0 6px 0 var(--glow-color-40),
+    inset 0 0 15px 0 var(--glow-color-30),
+    inset 0 0 25px 2px var(--glow-color-20),
+    inset 0 0 50px 2px var(--glow-color-10),
+    0 0 1px 0 var(--glow-color-60),
+    0 0 3px 0 var(--glow-color-50),
+    0 0 6px 0 var(--glow-color-40),
+    0 0 15px 0 var(--glow-color-30),
+    0 0 25px 2px var(--glow-color-20),
+    0 0 50px 2px var(--glow-color-10);
+}

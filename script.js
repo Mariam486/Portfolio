@@ -127,6 +127,27 @@ window.addEventListener('scroll', () => {
   });
 });
 
+// ---------- BorderGlow — Education card ----------
+const eduCard = document.querySelector('.edu-glow');
+if (eduCard) {
+  eduCard.addEventListener('pointermove', (e) => {
+    const rect = eduCard.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const dx = x - cx;
+    const dy = y - cy;
+    const kx = dx !== 0 ? cx / Math.abs(dx) : Infinity;
+    const ky = dy !== 0 ? cy / Math.abs(dy) : Infinity;
+    const proximity = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1) * 100;
+    let angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+    if (angle < 0) angle += 360;
+    eduCard.style.setProperty('--edge-proximity', proximity.toFixed(3));
+    eduCard.style.setProperty('--cursor-angle', `${angle.toFixed(3)}deg`);
+  });
+}
+
 // ---------- Theme toggle (light/dark) ----------
 const themeBtn = document.getElementById('themeToggle');
 let dark = false;
