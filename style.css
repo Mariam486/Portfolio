@@ -66,10 +66,10 @@ header{
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(246,244,241,0.85);
+  background: var(--bg-header, rgba(246,244,241,0.85));
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
-  transition: border-color .3s ease;
+  transition: border-color .3s ease, background .3s ease;
 }
 header.scrolled{ border-color: var(--line); }
 
