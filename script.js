@@ -127,21 +127,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ---------- Hamburger menu ----------
-const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobileNav');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-});
-// Close mobile nav when a link is clicked
-mobileNav.querySelectorAll('.mobile-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-  });
-});
-
 // ---------- Theme toggle (light/dark) ----------
 const themeBtn = document.getElementById('themeToggle');
 let dark = false;
