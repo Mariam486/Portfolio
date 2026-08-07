@@ -55,10 +55,20 @@ const experience = [
 
 // ---------- Render skills ----------
 const skillsGrid = document.getElementById('skillsGrid');
-skills.forEach((s, index) => {
+skillsGrid.setAttribute('role', 'region');
+skillsGrid.setAttribute('aria-label', 'Technologies I work with');
+skillsGrid.innerHTML = `
+  <div class="skills-loop__track">
+    <ul class="skills-loop__list" data-skills-list></ul>
+    <ul class="skills-loop__list" data-skills-list aria-hidden="true"></ul>
+  </div>`;
+
+const createSkill = (s, index, duplicate = false) => {
+  const item = document.createElement('li');
+  item.className = 'skills-loop__item';
   const el = document.createElement('button');
   el.type = 'button';
-  el.className = 'skill-chip reveal';
+  el.className = `skill-chip${duplicate ? '' : ' reveal'}`;
   el.style.setProperty('--skill-gradient', s.gradient);
   el.style.setProperty('--skill-ink', s.dark ? '#1c1a17' : '#fff');
   el.style.setProperty('--skill-delay', `${index * 45}ms`);
@@ -69,7 +79,24 @@ skills.forEach((s, index) => {
       <span class="skill-glyph" aria-hidden="true">${s.glyph}</span>
     </span>
     <span class="skill-label">${s.name}</span>`;
-  skillsGrid.appendChild(el);
+  item.appendChild(el);
+  return item;
+};
+
+document.querySelectorAll('[data-skills-list]').forEach((list, copyIndex) => {
+  skills.forEach((s, index) => list.appendChild(createSkill(s, index, copyIndex > 0)));
+});
+
+const skillsLoopTrack = skillsGrid.querySelector('.skills-loop__track');
+skillsGrid.addEventListener('pointerenter', () => {
+  skillsLoopTrack.classList.add('is-paused');
+});
+skillsGrid.addEventListener('pointerleave', () => {
+  skillsLoopTrack.classList.remove('is-paused');
+});
+skillsGrid.addEventListener('focusin', () => skillsLoopTrack.classList.add('is-paused'));
+skillsGrid.addEventListener('focusout', (event) => {
+  if (!skillsGrid.contains(event.relatedTarget)) skillsLoopTrack.classList.remove('is-paused');
 });
 
 // ---------- Render projects ----------
