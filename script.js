@@ -1,16 +1,16 @@
 // ---------- Data ----------
 const skills = [
-  { name: "Python", color: "#3776AB", glyph: "Py" },
-  { name: "Java", color: "#E76F00", glyph: "J" },
-  { name: "C++", color: "#00599C", glyph: "C++" },
-  { name: "JavaScript", color: "#F0DB4F", glyph: "JS", dark:true },
-  { name: "HTML", color: "#E44D26", glyph: "H" },
-  { name: "CSS", color: "#264DE4", glyph: "C" },
-  { name: "React", color: "#149ECA", glyph: "R" },
-  { name: "MySQL", color: "#4479A1", glyph: "Q" },
-  { name: "Git", color: "#F1502F", glyph: "Git" },
-  { name: "Figma", color: "#A259FF", glyph: "F" },
-  { name: "Canva", color: "#00C4CC", glyph: "Cv" },
+  { name: "Python", gradient: "linear-gradient(135deg, #3776AB, #245579)", glyph: "Py" },
+  { name: "Java", gradient: "linear-gradient(135deg, #E76F00, #b94c00)", glyph: "J" },
+  { name: "C++", gradient: "linear-gradient(135deg, #1269a6, #004b80)", glyph: "C++" },
+  { name: "JavaScript", gradient: "linear-gradient(135deg, #F4DB4F, #d6ac22)", glyph: "JS", dark:true },
+  { name: "HTML", gradient: "linear-gradient(135deg, #ef633f, #c83d25)", glyph: "H" },
+  { name: "CSS", gradient: "linear-gradient(135deg, #3d5ce8, #2441bd)", glyph: "C" },
+  { name: "React", gradient: "linear-gradient(135deg, #20b5d5, #108cae)", glyph: "R" },
+  { name: "MySQL", gradient: "linear-gradient(135deg, #5e90b1, #356a8d)", glyph: "Q" },
+  { name: "Git", gradient: "linear-gradient(135deg, #f15a3a, #d13921)", glyph: "Git" },
+  { name: "Figma", gradient: "linear-gradient(135deg, #a65cf3, #8141cc)", glyph: "F" },
+  { name: "Canva", gradient: "linear-gradient(135deg, #18cbd0, #0c9fa9)", glyph: "Cv" },
 ];
 
 const projects = [
@@ -55,10 +55,20 @@ const experience = [
 
 // ---------- Render skills ----------
 const skillsGrid = document.getElementById('skillsGrid');
-skills.forEach(s => {
-  const el = document.createElement('div');
+skills.forEach((s, index) => {
+  const el = document.createElement('button');
+  el.type = 'button';
   el.className = 'skill-chip reveal';
-  el.innerHTML = `<div class="skill-glyph" style="background:${s.color}; color:${s.dark ? '#1c1a17' : '#fff'}">${s.glyph}</div><span>${s.name}</span>`;
+  el.style.setProperty('--skill-gradient', s.gradient);
+  el.style.setProperty('--skill-ink', s.dark ? '#1c1a17' : '#fff');
+  el.style.setProperty('--skill-delay', `${index * 45}ms`);
+  el.setAttribute('aria-label', s.name);
+  el.innerHTML = `
+    <span class="skill-back" aria-hidden="true"></span>
+    <span class="skill-front">
+      <span class="skill-glyph" aria-hidden="true">${s.glyph}</span>
+    </span>
+    <span class="skill-label">${s.name}</span>`;
   skillsGrid.appendChild(el);
 });
 
