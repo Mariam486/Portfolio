@@ -99,6 +99,40 @@ skillsGrid.addEventListener('focusout', (event) => {
   if (!skillsGrid.contains(event.relatedTarget)) skillsLoopTrack.classList.remove('is-paused');
 });
 
+// ---------- Contact form ----------
+const openContactForm = document.getElementById('openContactForm');
+const closeContactForm = document.getElementById('closeContactForm');
+const contactFormWrap = document.getElementById('contactFormWrap');
+const contactForm = document.getElementById('contactForm');
+
+const setContactFormOpen = (isOpen) => {
+  contactFormWrap.classList.toggle('is-open', isOpen);
+  contactFormWrap.setAttribute('aria-hidden', String(!isOpen));
+  if (isOpen) {
+    contactForm.querySelector('input')?.focus();
+  } else {
+    openContactForm.focus();
+  }
+};
+
+openContactForm.addEventListener('click', () => setContactFormOpen(true));
+closeContactForm.addEventListener('click', () => setContactFormOpen(false));
+contactFormWrap.addEventListener('click', (event) => {
+  if (event.target === contactFormWrap) setContactFormOpen(false);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && contactFormWrap.classList.contains('is-open')) {
+    setContactFormOpen(false);
+  }
+});
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(contactForm);
+  const subject = `Portfolio enquiry from ${data.get('name')}`;
+  const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+  window.location.href = `mailto:mariamfatima486@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
 // ---------- Render projects ----------
 const projectList = document.getElementById('projectList');
 projects.forEach(p => {
