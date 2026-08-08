@@ -150,26 +150,33 @@
      <div class="contact-form-wrap" id="contactFormWrap" aria-hidden="true">
       <div class="contact-form-head">
         <div>
-          <span class="form-kicker">Start a conversation</span>
-          <h3>Tell me a little about it</h3>
+           <div class="form-kicker"><span class="status-dot"></span> Open to new opportunities</div>
+           <h3>Tell me a little about it</h3>
+           <p class="form-intro">Share a few details and I’ll get back to you soon.</p>
         </div>
-        <button type="button" class="form-close" id="closeContactForm" aria-label="Close contact form">×</button>
+         <div class="form-head-actions">
+           <a class="form-linkedin" href="https://www.linkedin.com/in/syeda-mariam-fatima-34ba4a332/" target="_blank" rel="noreferrer noopener" aria-label="Connect with Mariam on LinkedIn">in</a>
+           <button type="button" class="form-close" id="closeContactForm" aria-label="Close contact form">×</button>
+         </div>
       </div>
       <form id="contactForm">
         <label>
-          Your name
-          <input type="text" name="name" placeholder="Mariam..." required>
+           <span>Your name</span>
+           <input type="text" name="name" placeholder="Mariam..." autocomplete="name" required>
         </label>
         <label>
-          Your email
-          <input type="email" name="email" placeholder="you@example.com" required>
+           <span>Your email</span>
+           <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
         </label>
         <label>
-          Your message
+           <span>Your message</span>
           <textarea name="message" rows="3" placeholder="Tell me what you have in mind..." required></textarea>
         </label>
-        <button type="submit" class="btn form-submit">Open email draft <span aria-hidden="true">↗</span></button>
-        <p class="form-note">This will open your email app with the message ready to send.</p>
+         <div class="form-bottom">
+           <button type="submit" class="btn form-submit">Open email draft <span aria-hidden="true">↗</span></button>
+           <p class="form-note"><span aria-hidden="true">✦</span> Usually replies within 1–2 days</p>
+         </div>
+         <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
        </form>
      </div>
      </div>

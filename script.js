@@ -104,6 +104,7 @@ const openContactForm = document.getElementById('openContactForm');
 const closeContactForm = document.getElementById('closeContactForm');
 const contactFormWrap = document.getElementById('contactFormWrap');
 const contactForm = document.getElementById('contactForm');
+const formFeedback = document.getElementById('formFeedback');
 
 const setContactFormOpen = (isOpen) => {
   contactFormWrap.classList.toggle('is-open', isOpen);
@@ -130,7 +131,11 @@ contactForm.addEventListener('submit', (event) => {
   const data = new FormData(contactForm);
   const subject = `Portfolio enquiry from ${data.get('name')}`;
   const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
-  window.location.href = `mailto:mariamfatima486@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  formFeedback.textContent = 'Your email draft is ready — thank you for reaching out.';
+  formFeedback.classList.add('is-visible');
+  window.setTimeout(() => {
+    window.location.href = `mailto:mariamfatima486@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }, 120);
 });
 
 // ---------- Render projects ----------
