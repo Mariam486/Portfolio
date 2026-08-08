@@ -131,11 +131,11 @@ contactForm.addEventListener('submit', (event) => {
   const data = new FormData(contactForm);
   const subject = `Portfolio enquiry from ${data.get('name')}`;
   const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
-  formFeedback.textContent = 'Your email draft is ready — thank you for reaching out.';
+  const mailtoUrl = `mailto:mariamfatima486@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  // Navigate synchronously from the submit gesture so browsers do not block the mail client.
+  formFeedback.textContent = 'Opening your email app…';
   formFeedback.classList.add('is-visible');
-  window.setTimeout(() => {
-    window.location.href = `mailto:mariamfatima486@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }, 120);
+  window.location.href = mailtoUrl;
 });
 
 // ---------- Render projects ----------

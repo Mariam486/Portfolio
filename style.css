@@ -758,6 +758,12 @@ header.scrolled{ border-color: var(--line); }
   font-size: .72rem;
 }
 .form-note span{ color: var(--coral); }
+.form-note a{
+  color: var(--coral-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .form-feedback{
   display:none;
   grid-column: 1 / -1;
