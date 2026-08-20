@@ -220,6 +220,30 @@ window.addEventListener('scroll', () => {
 // ---------- Active nav link on scroll ----------
 const navLinks = document.querySelectorAll('.nav-links a');
 const sections = [...navLinks].map(l => document.querySelector(l.getAttribute('href')));
+const navToggle = document.getElementById('navToggle');
+const siteNav = document.getElementById('siteNav');
+
+const setNavOpen = (isOpen) => {
+  if (!navToggle || !siteNav) return;
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  siteNav.classList.toggle('is-open', isOpen);
+};
+
+navToggle?.addEventListener('click', () => {
+  const nextState = navToggle.getAttribute('aria-expanded') !== 'true';
+  setNavOpen(nextState);
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 760) setNavOpen(false);
+  });
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 760) setNavOpen(false);
+});
+
 window.addEventListener('scroll', () => {
   let current = sections[0];
   sections.forEach(s => {
