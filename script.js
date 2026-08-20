@@ -21,7 +21,7 @@ const projects = [
     gradA: "#232946", gradB: "#3f66d1",
     thumbText: "SafeRoute",
     visual: "safroute",
-    source: "https://github.com/Mariam486"
+    source: "https://github.com/Mariam486/SafeRoute"
   },
   {
     title: "Crypto Encryption Tool",
@@ -30,7 +30,7 @@ const projects = [
     gradA: "#0b1d33", gradB: "#0e6ba8",
     thumbText: "Crypto Tool",
     visual: "crypto",
-    source: "https://github.com/Mariam486"
+    source: "https://github.com/Mariam486/Crypto-Encryption"
   },
   {
     title: "Arena 456",
