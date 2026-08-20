@@ -8,6 +8,9 @@
   --coral-deep: #e8532f;
   --coral-tint: #ffe4da;
   --line: #eae6e0;
+  --surface-glass: rgba(255,255,255,0.48);
+  --surface-panel: rgba(255,255,255,0.92);
+  --surface-panel-soft: rgba(255,255,255,0.5);
   --radius: 18px;
   --maxw: 1100px;
 }
@@ -106,7 +109,7 @@ header.scrolled{ border-color: var(--line); }
   width: 42px;
   height: 42px;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,0.45);
+  background: var(--surface-glass);
   border-radius: 12px;
   padding: 8px 10px;
   cursor: pointer;
@@ -174,7 +177,7 @@ header.scrolled{ border-color: var(--line); }
     flex-direction: column;
     gap: 12px;
     padding: 16px 18px;
-    background: rgba(255,255,255,0.9);
+    background: var(--surface-panel);
     border: 1px solid var(--line);
     border-radius: 16px;
     box-shadow: 0 24px 40px -28px rgba(28,26,23,0.35);
@@ -228,7 +231,7 @@ header.scrolled{ border-color: var(--line); }
   margin-bottom: 22px;
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.58);
+  background: var(--surface-glass);
   border: 1px solid rgba(255,107,74,0.18);
   color: var(--ink-soft);
   font-size: 0.78rem;
@@ -269,7 +272,7 @@ header.scrolled{ border-color: var(--line); }
   gap:8px;
   padding: 9px 14px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.48);
+  background: var(--surface-glass);
   border: 1px solid var(--line);
   color: var(--ink-soft);
   font-size: 0.8rem;
@@ -406,7 +409,7 @@ header.scrolled{ border-color: var(--line); }
 
 .card-stack{ display:flex; flex-direction:column; gap: 16px; }
 .info-card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.76));
+  background: linear-gradient(180deg, var(--surface-panel), var(--surface-glass));
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 26px 28px;
@@ -822,7 +825,7 @@ header.scrolled{ border-color: var(--line); }
   gap: 22px;
   padding: 20px 22px 20px 18px;
   position: relative;
-  background: rgba(255,255,255,0.5);
+  background: var(--surface-panel-soft);
   border: 1px solid var(--line);
   border-radius: 18px;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;

@@ -288,9 +288,12 @@ const applyTheme = () => {
   r.style.setProperty('--bg-header',  dark ? 'rgba(28,23,20,0.88)' : 'rgba(246,244,241,0.85)');
   r.style.setProperty('--ink',        dark ? '#f2ebe4' : '#1c1a17');
   r.style.setProperty('--ink-soft',   dark ? '#a8998e' : '#6b6560');
-  r.style.setProperty('--ink-faint',  dark ? '#665850' : '#a39d96');
+  r.style.setProperty('--ink-faint',  dark ? '#b9aaa0' : '#a39d96');
   r.style.setProperty('--coral-tint', dark ? '#3a1a10' : '#ffe4da');
   r.style.setProperty('--line',       dark ? '#302520' : '#eae6e0');
+  r.style.setProperty('--surface-glass', dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.48)');
+  r.style.setProperty('--surface-panel', dark ? 'rgba(37,31,27,0.96)' : 'rgba(255,255,255,0.92)');
+  r.style.setProperty('--surface-panel-soft', dark ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.5)');
   themeBtn.textContent = dark ? '☀' : '🌙';
   themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
