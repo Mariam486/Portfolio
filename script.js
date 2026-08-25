@@ -15,24 +15,6 @@ const skills = [
 
 const projects = [
   {
-    title: "SafeRoute",
-    desc: "AI-powered route safety recommendation system analyzing historical data to calculate optimized low-risk travel paths.",
-    tags: ["Python", "Django", "Maps API"],
-    gradA: "#232946", gradB: "#3f66d1",
-    thumbText: "SafeRoute",
-    visual: "safroute",
-    source: "https://github.com/Mariam486/SafeRoute"
-  },
-  {
-    title: "Crypto Encryption Tool",
-    desc: "Comprehensive tool for secure file and message encryption and decryption using advanced classic algorithms.",
-    tags: ["Python", "Cryptography"],
-    gradA: "#0b1d33", gradB: "#0e6ba8",
-    thumbText: "Crypto Tool",
-    visual: "crypto",
-    source: "https://github.com/Mariam486/Crypto-Encryption"
-  },
-  {
     title: "Arena 456",
     desc: "An interactive web application delivering an engaging, visually immersive user experience — frontend and UI/UX designed with modern web technologies.",
     tags: ["React", "JavaScript", "HTML", "CSS"],
