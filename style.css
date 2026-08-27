@@ -917,6 +917,22 @@ header.scrolled{ border-color: var(--line); }
 .tile-two{ width: 102px; height: 132px; left: 88px; top: 24px; background:#f38c78; transform:rotate(5deg); }
 .tile-three{ width: 102px; height: 132px; left: 148px; top: 32px; background:#a8e0d0; transform:rotate(14deg); }
 .social-spark{ position:absolute; right:30px; top:20px; color:#fff; font: 500 3rem/1 'Fraunces', serif; }
+.design-card-portfolio .design-art{ background: linear-gradient(135deg, #2d1b4e, #5c3a8f); }
+.portfolio-frame{
+  position:absolute;
+  width: 164px;
+  height: 120px;
+  left: 34px;
+  top: 38px;
+  z-index:1;
+  border: 2px solid rgba(255,255,255,.9);
+  border-radius: 10px;
+  box-shadow: 0 16px 32px -16px rgba(0,0,0,.4);
+}
+.portfolio-accent{ position:absolute; border-radius:50%; border: 3px solid rgba(255,255,255,.6); }
+.accent-one{ width: 124px; height: 124px; right: 12px; bottom: -24px; }
+.accent-two{ width: 68px; height: 68px; left: -20px; top: 62px; border-color: rgba(255,255,255,.3); }
+.portfolio-text{ position:absolute; z-index:2; right:24px; top:16px; color:#fff; font: 700 0.72rem/1 'Inter', sans-serif; letter-spacing:.08em; text-transform:uppercase; }
 .design-card-body{ padding: 22px 22px 24px; }
 .design-type{ color: var(--coral-deep); font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
 .design-card h3{ font-size:1.12rem; margin:8px 0; }
