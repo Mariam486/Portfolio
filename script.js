@@ -58,13 +58,15 @@ const experience = [
 
 // ---------- Render skills ----------
 const skillsGrid = document.getElementById('skillsGrid');
-skillsGrid.setAttribute('role', 'region');
-skillsGrid.setAttribute('aria-label', 'Technologies I work with');
-skillsGrid.innerHTML = `
-  <div class="skills-loop__track">
-    <ul class="skills-loop__list" data-skills-list></ul>
-    <ul class="skills-loop__list" data-skills-list aria-hidden="true"></ul>
-  </div>`;
+if (skillsGrid) {
+  skillsGrid.setAttribute('role', 'region');
+  skillsGrid.setAttribute('aria-label', 'Technologies I work with');
+  skillsGrid.innerHTML = `
+    <div class="skills-loop__track">
+      <ul class="skills-loop__list" data-skills-list></ul>
+      <ul class="skills-loop__list" data-skills-list aria-hidden="true"></ul>
+    </div>`;
+}
 
 const createSkill = (s, index, duplicate = false) => {
   const item = document.createElement('li');
@@ -90,17 +92,19 @@ document.querySelectorAll('[data-skills-list]').forEach((list, copyIndex) => {
   skills.forEach((s, index) => list.appendChild(createSkill(s, index, copyIndex > 0)));
 });
 
-const skillsLoopTrack = skillsGrid.querySelector('.skills-loop__track');
-skillsGrid.addEventListener('pointerenter', () => {
-  skillsLoopTrack.classList.add('is-paused');
-});
-skillsGrid.addEventListener('pointerleave', () => {
-  skillsLoopTrack.classList.remove('is-paused');
-});
-skillsGrid.addEventListener('focusin', () => skillsLoopTrack.classList.add('is-paused'));
-skillsGrid.addEventListener('focusout', (event) => {
-  if (!skillsGrid.contains(event.relatedTarget)) skillsLoopTrack.classList.remove('is-paused');
-});
+if (skillsGrid) {
+  const skillsLoopTrack = skillsGrid.querySelector('.skills-loop__track');
+  skillsGrid.addEventListener('pointerenter', () => {
+    skillsLoopTrack.classList.add('is-paused');
+  });
+  skillsGrid.addEventListener('pointerleave', () => {
+    skillsLoopTrack.classList.remove('is-paused');
+  });
+  skillsGrid.addEventListener('focusin', () => skillsLoopTrack.classList.add('is-paused'));
+  skillsGrid.addEventListener('focusout', (event) => {
+    if (!skillsGrid.contains(event.relatedTarget)) skillsLoopTrack.classList.remove('is-paused');
+  });
+}
 
 // ---------- Contact form ----------
 const openContactForm = document.getElementById('openContactForm');
@@ -109,78 +113,84 @@ const contactFormWrap = document.getElementById('contactFormWrap');
 const contactForm = document.getElementById('contactForm');
 const formFeedback = document.getElementById('formFeedback');
 
-const setContactFormOpen = (isOpen) => {
-  contactFormWrap.classList.toggle('is-open', isOpen);
-  contactFormWrap.setAttribute('aria-hidden', String(!isOpen));
-  if (isOpen) {
-    contactForm.querySelector('input')?.focus();
-  } else {
-    openContactForm.focus();
-  }
-};
+if (openContactForm && closeContactForm && contactFormWrap && contactForm) {
+  const setContactFormOpen = (isOpen) => {
+    contactFormWrap.classList.toggle('is-open', isOpen);
+    contactFormWrap.setAttribute('aria-hidden', String(!isOpen));
+    if (isOpen) {
+      contactForm.querySelector('input')?.focus();
+    } else {
+      openContactForm.focus();
+    }
+  };
 
-openContactForm.addEventListener('click', () => setContactFormOpen(true));
-closeContactForm.addEventListener('click', () => setContactFormOpen(false));
-contactFormWrap.addEventListener('click', (event) => {
-  if (event.target === contactFormWrap) setContactFormOpen(false);
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && contactFormWrap.classList.contains('is-open')) {
-    setContactFormOpen(false);
-  }
-});
-contactForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const data = new FormData(contactForm);
-  const subject = `Portfolio enquiry from ${data.get('name')}`;
-  const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
-  const mailtoUrl = `mailto:mariamfatima486@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  // Navigate synchronously from the submit gesture so browsers do not block the mail client.
-  formFeedback.textContent = 'Opening your email app…';
-  formFeedback.classList.add('is-visible');
-  window.location.href = mailtoUrl;
-});
+  openContactForm.addEventListener('click', () => setContactFormOpen(true));
+  closeContactForm.addEventListener('click', () => setContactFormOpen(false));
+  contactFormWrap.addEventListener('click', (event) => {
+    if (event.target === contactFormWrap) setContactFormOpen(false);
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && contactFormWrap.classList.contains('is-open')) {
+      setContactFormOpen(false);
+    }
+  });
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+    const subject = `Portfolio enquiry from ${data.get('name')}`;
+    const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+    const mailtoUrl = `mailto:mariamfatima486@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Navigate synchronously from the submit gesture so browsers do not block the mail client.
+    formFeedback.textContent = 'Opening your email app…';
+    formFeedback.classList.add('is-visible');
+    window.location.href = mailtoUrl;
+  });
+}
 
 // ---------- Render projects ----------
 const projectList = document.getElementById('projectList');
-projects.forEach(p => {
-  const el = document.createElement('div');
-  el.className = 'project-card reveal';
-  el.innerHTML = `
-    <div class="project-thumb ${p.visual}" style="--thumb-a:${p.gradA}; --thumb-b:${p.gradB}">
-      <div class="thumb-orb orb-a"></div>
-      <div class="thumb-orb orb-b"></div>
-      <div class="thumb-grid"></div>
-      <div class="thumb-panel"></div>
-      <div class="thumb-badge">${p.thumbText}</div>
-    </div>
-    <div class="project-body">
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-      <div class="tag-row">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-      <div class="project-links">
-        <a href="${p.source || 'https://github.com/Mariam486'}" target="_blank" rel="noreferrer noopener">🐙 GitHub</a>
-        <a href="https://github.com/Mariam486" target="_blank" rel="noreferrer noopener">↗ Portfolio</a>
+if (projectList) {
+  projects.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'project-card reveal';
+    el.innerHTML = `
+      <div class="project-thumb ${p.visual}" style="--thumb-a:${p.gradA}; --thumb-b:${p.gradB}">
+        <div class="thumb-orb orb-a"></div>
+        <div class="thumb-orb orb-b"></div>
+        <div class="thumb-grid"></div>
+        <div class="thumb-panel"></div>
+        <div class="thumb-badge">${p.thumbText}</div>
       </div>
-    </div>`;
-  projectList.appendChild(el);
-});
+      <div class="project-body">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="tag-row">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <div class="project-links">
+          <a href="${p.source || 'https://github.com/Mariam486'}" target="_blank" rel="noreferrer noopener">🐙 GitHub</a>
+          <a href="https://github.com/Mariam486" target="_blank" rel="noreferrer noopener">↗ Portfolio</a>
+        </div>
+      </div>`;
+    projectList.appendChild(el);
+  });
+}
 
 // ---------- Render timeline ----------
 const timeline = document.getElementById('timeline');
-experience.forEach(e => {
-  const el = document.createElement('div');
-  el.className = 'timeline-item reveal';
-  el.innerHTML = `
-    <div class="tl-icon">${e.icon}</div>
-    <div class="tl-content">
-      <h3>${e.title}</h3>
-      <div class="tl-role">${e.role}</div>
-      <div class="tl-year">${e.year}</div>
-      <div class="tl-desc">${e.desc}</div>
-    </div>`;
-  timeline.appendChild(el);
-});
+if (timeline) {
+  experience.forEach(e => {
+    const el = document.createElement('div');
+    el.className = 'timeline-item reveal';
+    el.innerHTML = `
+      <div class="tl-icon">${e.icon}</div>
+      <div class="tl-content">
+        <h3>${e.title}</h3>
+        <div class="tl-role">${e.role}</div>
+        <div class="tl-year">${e.year}</div>
+        <div class="tl-desc">${e.desc}</div>
+      </div>`;
+    timeline.appendChild(el);
+  });
+}
 
 // ---------- Scroll reveal ----------
 const observer = new IntersectionObserver((entries) => {
@@ -201,7 +211,11 @@ window.addEventListener('scroll', () => {
 
 // ---------- Active nav link on scroll ----------
 const navLinks = document.querySelectorAll('.nav-links a');
-const sections = [...navLinks].map(l => document.querySelector(l.getAttribute('href')));
+const sections = [...navLinks]
+  .map(l => l.getAttribute('href'))
+  .filter(href => href?.startsWith('#'))
+  .map(href => document.querySelector(href))
+  .filter(Boolean);
 const navToggle = document.getElementById('navToggle');
 const siteNav = document.getElementById('siteNav');
 
@@ -227,6 +241,7 @@ window.addEventListener('resize', () => {
 });
 
 window.addEventListener('scroll', () => {
+  if (!sections.length) return;
   let current = sections[0];
   sections.forEach(s => {
     if (s && window.scrollY >= s.offsetTop - 120) current = s;
@@ -276,13 +291,15 @@ const applyTheme = () => {
   r.style.setProperty('--surface-glass', dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.48)');
   r.style.setProperty('--surface-panel', dark ? 'rgba(37,31,27,0.96)' : 'rgba(255,255,255,0.92)');
   r.style.setProperty('--surface-panel-soft', dark ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.5)');
-  themeBtn.textContent = dark ? '☀' : '🌙';
-  themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  if (themeBtn) {
+    themeBtn.textContent = dark ? '☀' : '🌙';
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
   localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
 };
 
 applyTheme();
-themeBtn.addEventListener('click', () => {
+themeBtn?.addEventListener('click', () => {
   dark = !dark;
   applyTheme();
 });
