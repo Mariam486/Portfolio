@@ -251,8 +251,20 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ---------- BorderGlow — all info cards ----------
-document.querySelectorAll('.edu-glow').forEach(card => {
+// ---------- BorderGlow — all card-like boxes ----------
+const borderGlowTargets = document.querySelectorAll(
+  '.border-glow, .stat-bubble, .stat-pill, .offer-card, .skill-chip, .project-card, .design-card, .achievement-card, .cta-card, .contact-form-wrap'
+);
+
+borderGlowTargets.forEach(card => {
+  card.classList.add('border-glow');
+  if (![...card.children].some(child => child.classList.contains('edge-light'))) {
+    const edgeLight = document.createElement('span');
+    edgeLight.className = 'edge-light';
+    edgeLight.setAttribute('aria-hidden', 'true');
+    card.prepend(edgeLight);
+  }
+
   card.addEventListener('pointermove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;

@@ -704,6 +704,10 @@ header.scrolled{ border-color: var(--line); }
   transition: transform .25s ease, box-shadow .25s ease;
   scroll-margin-top: 90px;
 }
+.project-card > .project-thumb,
+.design-card > .design-art{
+  border-radius: var(--radius) var(--radius) 0 0;
+}
 .project-card:hover{ transform: translateY(-4px); box-shadow: 0 24px 40px -22px rgba(28,26,23,0.22); }
 .project-thumb{
   height: 220px;
@@ -1238,8 +1242,8 @@ footer{
 /* Section anchors offset for sticky header */
 section[id]{ scroll-margin-top: 90px; }
 
-/* ---------- BorderGlow effect (Education card) ---------- */
-.edu-glow{
+/* ---------- BorderGlow effect (all cards) ---------- */
+.border-glow{
   --edge-proximity: 0;
   --cursor-angle: 45deg;
   --edge-sensitivity: 30;
@@ -1268,9 +1272,9 @@ section[id]{ scroll-margin-top: 90px; }
   overflow: visible !important;
 }
 
-.edu-glow::before,
-.edu-glow::after,
-.edu-glow > .edge-light{
+.border-glow::before,
+.border-glow::after,
+.border-glow > .edge-light{
   content: "";
   position: absolute;
   inset: 0;
@@ -1278,15 +1282,15 @@ section[id]{ scroll-margin-top: 90px; }
   transition: opacity .25s ease-out;
   z-index: -1;
 }
-.edu-glow:not(:hover)::before,
-.edu-glow:not(:hover)::after,
-.edu-glow:not(:hover) > .edge-light{
+.border-glow:not(:hover)::before,
+.border-glow:not(:hover)::after,
+.border-glow:not(:hover) > .edge-light{
   opacity: 0;
   transition: opacity .75s ease-in-out;
 }
 
 /* coloured mesh border */
-.edu-glow::before{
+.border-glow::before{
   border: 1px solid transparent;
   background:
     linear-gradient(var(--bg-card) 0 100%) padding-box,
@@ -1305,7 +1309,7 @@ section[id]{ scroll-margin-top: 90px; }
 }
 
 /* mesh fill near edges */
-.edu-glow::after{
+.border-glow::after{
   border: 1px solid transparent;
   background:
     var(--g1) padding-box, var(--g2) padding-box, var(--g3) padding-box,
@@ -1325,7 +1329,7 @@ section[id]{ scroll-margin-top: 90px; }
 }
 
 /* outer glow halo */
-.edu-glow > .edge-light{
+.border-glow > .edge-light{
   inset: calc(var(--glow-padding) * -1);
   pointer-events: none;
   z-index: 1;
@@ -1336,7 +1340,7 @@ section[id]{ scroll-margin-top: 90px; }
   opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
   mix-blend-mode: plus-lighter;
 }
-.edu-glow > .edge-light::before{
+.border-glow > .edge-light::before{
   content: "";
   position: absolute;
   inset: var(--glow-padding);
