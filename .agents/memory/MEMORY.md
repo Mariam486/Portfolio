@@ -1,1 +1,0 @@
-- [WebGL background fallback](liquid-ether.md) — WebGL effects need a capability check and a visual CSS fallback for restricted preview environments.
