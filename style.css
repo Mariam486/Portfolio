@@ -1024,17 +1024,11 @@ header.scrolled{ border-color: var(--line); }
   grid-template-columns: 1.2fr 0.8fr;
   gap: 30px;
   align-items:center;
+  align-content:start;
+  height: auto;
   min-height: 0;
   position: relative;
   overflow:hidden;
-}
-.cta-card::before{
-  content:"";
-  position:absolute;
-  right: -60px; top: -60px;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
 }
 .cta-card h2{ font-size: 1.7rem; margin-bottom: 9px; color:#fff; }
 .cta-card p{ opacity: 0.92; margin-bottom: 17px; max-width: 420px; font-size: 0.9rem; }

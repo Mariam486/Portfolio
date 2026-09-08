@@ -253,7 +253,7 @@ window.addEventListener('scroll', () => {
 
 // ---------- BorderGlow — all card-like boxes ----------
 const borderGlowTargets = document.querySelectorAll(
-  '.border-glow, .stat-bubble, .stat-pill, .offer-card, .skill-chip, .project-card, .design-card, .achievement-card, .cta-card, .contact-form-wrap'
+  '.border-glow, .stat-bubble, .stat-pill, .offer-card, .skill-chip, .project-card, .design-card, .achievement-card, .contact-form-wrap'
 );
 
 borderGlowTargets.forEach(card => {
