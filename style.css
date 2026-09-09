@@ -291,6 +291,13 @@ header.scrolled{ border-color: var(--line); }
   transition: color .2s;
 }
 .hero-meta a:hover{ color: var(--coral-deep); }
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
 .hero-badges{
   display:flex;
   flex-wrap:wrap;
