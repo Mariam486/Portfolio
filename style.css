@@ -217,7 +217,7 @@ header.scrolled{ border-color: var(--line); }
   }
   .nav-links.is-open{ display:flex; }
   .nav-right{ margin-left:auto; }
-  .btn-sm{ display: none; }
+  .nav-right .btn-sm{ display: none; }
 }
 
 /* ---------- Hero ---------- */
@@ -374,6 +374,28 @@ header.scrolled{ border-color: var(--line); }
   .hero-grid{ grid-template-columns: 1fr; }
   .portrait-wrap{ order:-1; margin-bottom: 10px;}
   .portrait{ width: 220px; height: 280px; border-radius: 120px 120px 16px 16px;}
+}
+
+@media(max-width: 760px){
+  .hero-actions{
+    gap: 10px;
+  }
+  .hero-actions .btn{
+    flex: 1 1 150px;
+    justify-content: center;
+  }
+  .hero-status{
+    max-width: 100%;
+    box-sizing: border-box;
+    align-items: flex-start;
+    border-radius: 16px;
+  }
+}
+
+@media(max-width: 520px){
+  .hero-actions .btn{
+    flex-basis: 100%;
+  }
 }
 
 /* ---------- About + Cards ---------- */
