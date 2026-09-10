@@ -1053,37 +1053,39 @@ header.scrolled{ border-color: var(--line); }
 .cta-btns .btn-outline:hover{ background: rgba(255,255,255,0.15); color:#fff; }
 
 .contact-list{
-  width: min(100%, 360px);
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   font-size: 0.84rem;
 }
 .contact-list li{ min-width: 0; }
 .contact-button{
+  width: 100%;
   min-height: 54px;
   padding: 10px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: none;
   border-radius: 12px;
-  background: rgba(38, 20, 18, 0.2);
-  color: #fff;
+  background: #fff;
+  color: var(--coral-deep);
   font-weight: 700;
   text-align: center;
-  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  box-shadow: 0 8px 20px -8px rgba(232,83,47,0.45);
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 .contact-button:hover,
 .contact-button:focus-visible{
-  background: rgba(255,255,255,0.18);
-  border-color: rgba(255,255,255,0.78);
-  color: #fff;
+  background: #fff;
+  color: var(--coral-deep);
   transform: translateY(-2px);
+  box-shadow: 0 12px 24px -8px rgba(232,83,47,0.6);
 }
 .contact-icon{
   width: 20px;
@@ -1285,7 +1287,7 @@ header.scrolled{ border-color: var(--line); }
   .cta-card{ border-radius: 22px; padding: 24px 20px; gap: 20px; }
   .cta-card h2{ font-size: 1.45rem; }
   .cta-card p{ margin-bottom: 14px; font-size: .86rem; }
-  .contact-list{ gap: 8px; font-size: .82rem; }
+  .contact-list{ grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; font-size: .82rem; }
   #contactForm{ grid-template-columns: 1fr; }
   #contactForm label:last-of-type,
   #contactForm .form-submit,
