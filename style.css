@@ -1054,26 +1054,28 @@ header.scrolled{ border-color: var(--line); }
 .tl-desc{ font-size: 0.9rem; color: var(--ink-soft); max-width: 560px; line-height: 1.6; }
 
 /* ---------- Contact CTA ---------- */
-.cta-section{ padding: 24px 0 58px; position: relative; }
+.cta-section{ padding: 40px 0 64px; position: relative; }
 .cta-card{
   background: linear-gradient(120deg, var(--coral-deep), var(--coral) 60%, #ffab8a);
   border-radius: 28px;
   max-width: 940px;
   margin: 0 auto;
-  padding: 34px 38px;
+  padding: 36px 40px 32px;
   color: #fff;
   display:grid;
   grid-template-columns: 1fr;
-  gap: 30px;
-  align-items:center;
-  align-content:start;
-  height: auto;
-  min-height: 0;
+  gap: 24px;
+  align-items:start;
   position: relative;
   overflow:hidden;
 }
-.cta-card h2{ font-size: 1.7rem; margin-bottom: 9px; color:#fff; }
-.cta-card p{ opacity: 0.92; margin-bottom: 17px; max-width: 420px; font-size: 0.9rem; }
+.cta-card > div:first-child{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cta-card h2{ font-size: 1.75rem; margin-bottom: 0; color:#fff; line-height: 1.2; }
+.cta-card p{ opacity: 0.92; margin-bottom: 0; max-width: 540px; font-size: 0.92rem; line-height: 1.55; }
 .cta-btns{ display:flex; gap: 12px; flex-wrap: wrap; }
 .cta-btns .btn{ background: #fff; color: var(--coral-deep); box-shadow: none; }
 .cta-btns .btn-outline{ background: transparent; border: 1.5px solid rgba(255,255,255,0.7); color:#fff; }
@@ -1092,8 +1094,8 @@ header.scrolled{ border-color: var(--line); }
 .contact-list li{ min-width: 0; }
 .contact-button{
   width: 100%;
-  min-height: 54px;
-  padding: 10px 12px;
+  min-height: 52px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1133,9 +1135,10 @@ header.scrolled{ border-color: var(--line); }
 .contact-form-wrap{
   position: absolute;
   z-index: 5;
-  left: 48px;
-  right: 48px;
-  bottom: 28px;
+  left: 36px;
+  right: 36px;
+  bottom: 24px;
+  top: 24px;
   padding: 24px 26px 22px;
   color: var(--ink);
   background: color-mix(in srgb, var(--bg-card) 94%, transparent);
@@ -1306,20 +1309,21 @@ header.scrolled{ border-color: var(--line); }
 .form-feedback.is-visible{ display:block; }
 
 @media(max-width: 780px){
-  .cta-card{ grid-template-columns: 1fr; padding: 28px 24px; }
-  .contact-form-wrap{ left: 26px; right: 26px; bottom: 22px; }
+  .cta-card{ grid-template-columns: 1fr; padding: 30px 28px 26px; }
+  .contact-form-wrap{ left: 28px; right: 28px; bottom: 22px; top: 22px; }
 }
 @media(max-width: 520px){
-  .cta-section{ padding-top: 18px; padding-bottom: 42px; }
-  .cta-card{ border-radius: 22px; padding: 24px 20px; gap: 20px; }
+  .cta-section{ padding-top: 24px; padding-bottom: 48px; }
+  .cta-card{ border-radius: 22px; padding: 26px 20px 22px; gap: 18px; }
+  .cta-card > div:first-child{ gap: 16px; }
   .cta-card h2{ font-size: 1.45rem; }
-  .cta-card p{ margin-bottom: 14px; font-size: .86rem; }
+  .cta-card p{ font-size: .86rem; }
   .contact-list{ grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; font-size: .82rem; }
   #contactForm{ grid-template-columns: 1fr; }
   #contactForm label:last-of-type,
   #contactForm .form-submit,
   #contactForm .form-note{ grid-column: auto; }
-  .contact-form-wrap{ left: 14px; right: 14px; padding: 20px 18px; }
+  .contact-form-wrap{ left: 14px; right: 14px; top: 16px; bottom: 16px; padding: 20px 18px; }
   .form-bottom{ align-items:flex-start; flex-direction:column; gap: 9px; }
 }
 
