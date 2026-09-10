@@ -298,6 +298,14 @@ header.scrolled{ border-color: var(--line); }
   flex-wrap: wrap;
   margin-top: 22px;
 }
+.hero-actions .btn{
+  background: #fff;
+  color: var(--coral-deep);
+}
+.hero-actions .btn:hover{
+  background: #fff;
+  color: var(--coral-deep);
+}
 .hero-badges{
   display:flex;
   flex-wrap:wrap;
