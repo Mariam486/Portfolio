@@ -1068,7 +1068,7 @@ header.scrolled{ border-color: var(--line); }
 .cta-card > div:first-child{
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
 .cta-card h2{ font-size: 1.6rem; margin: 0; color:#fff; line-height: 1.2; }
 .cta-card p{ opacity: 0.92; margin: 0; max-width: 540px; font-size: 0.88rem; line-height: 1.5; }
