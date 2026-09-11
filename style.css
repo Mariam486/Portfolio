@@ -1060,7 +1060,7 @@ header.scrolled{ border-color: var(--line); }
   border-radius: 28px;
   max-width: 940px;
   margin: 0 auto;
-  padding: 22px 40px 20px;
+  padding: 20px 40px;
   color: #fff;
   position: relative;
   overflow:hidden;
@@ -1128,7 +1128,7 @@ header.scrolled{ border-color: var(--line); }
   stroke: none;
 }
 
-.contact-form-wrap{
+.cta-card .contact-form-wrap{
   position: absolute;
   z-index: 5;
   left: 40px;
@@ -1305,12 +1305,12 @@ header.scrolled{ border-color: var(--line); }
 .form-feedback.is-visible{ display:block; }
 
 @media(max-width: 780px){
-  .cta-card{ grid-template-columns: 1fr; padding: 30px 28px 26px; }
+  .cta-card{ grid-template-columns: 1fr; padding: 30px 28px; }
   .contact-form-wrap{ left: 28px; right: 28px; bottom: 22px; top: 22px; }
 }
 @media(max-width: 520px){
   .cta-section{ padding-top: 24px; padding-bottom: 48px; }
-  .cta-card{ border-radius: 22px; padding: 18px 20px 16px; gap: 12px; }
+  .cta-card{ border-radius: 22px; padding: 18px 20px; gap: 12px; }
   .cta-card > div:first-child{ gap: 10px; }
   .cta-card h2{ font-size: 1.45rem; }
   .cta-card p{ font-size: .86rem; }
